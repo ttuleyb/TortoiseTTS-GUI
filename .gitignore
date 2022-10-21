@@ -159,3 +159,4 @@ tortoise/is_this_from_tortoise.py
 tortoise/read.py
 tortoise/test.py
 flagged/*
+tortoise/scripts/*
