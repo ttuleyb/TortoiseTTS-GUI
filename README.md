@@ -14,4 +14,4 @@ Follow the installation guide here [Tortoise Local Installation](https://github.
 Don't use the --share option when launching gradio as it can be used to run arbitrary code on your machine. This is due to the longform implementation involving passing an argument to cmd which can be hijacked.
 
 ## What's up with the voice selections?
-Those are just the voices I've made myself, unfortunately I don't want to be hold liable publishing anyone elses voice on GitHub so you need to find recordings of the voices of the people you want to use yourself.
+Those are just the voices I've made myself, unfortunately I don't want to be hold liable publishing anyone elses voice on GitHub so you need to find recordings of the voices of the people you want to use yourself. More info in the Tortoise TTS repo.
