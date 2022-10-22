@@ -10,6 +10,9 @@ The gradioUI I've written in python and a simple middleman script I've created t
 ## Installation
 Follow the installation guide here [Tortoise Local Installation](https://github.com/neonbjb/tortoise-tts#local-installation) then simply put the files in the root directors, create a shell there and run gradeui.py
 
+## Sentence vs Longform
+Sentence should be used when synthesizing one or two sentences whereas longform should be used for longer content. Sentence works like [do_tts.py](https://github.com/neonbjb/tortoise-tts#do_ttspy) whereas longform works like [read.py](https://github.com/neonbjb/tortoise-tts#readpy). Keep in mind that longform will only return a single clip regardless of selected numOfOutputs.
+
 ## WARNING
 Don't use the --share option when launching gradio as it can be used to run arbitrary code on your machine. This is due to the longform implementation involving passing an argument to cmd which can be hijacked.
 
