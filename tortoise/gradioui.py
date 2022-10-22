@@ -88,4 +88,5 @@ tripleOutput = gr.Interface(
 demo = tripleOutput
 
 if __name__ == "__main__":
-    demo.launch(server_name="0.0.0.0", share=True) #secret, 44IQUFmIQWOAZGJ
+    #Remove server_name="0.0.0.0" if you don't want to share with your entire wifi network
+    demo.launch(server_name="0.0.0.0", share=False) #Keep share false unless you disable longform or fix the arbitary code execution
