@@ -15,5 +15,3 @@ Don't use the --share option when launching gradio as it can be used to run arbi
 
 ## What's up with the voice selections?
 Those are just the voices I've made myself, unfortunately I don't want to be hold liable publishing anyone elses voice on GitHub so you need to find recordings of the voices of the people you want to use yourself.
-
-## 
