@@ -13,8 +13,8 @@ Follow the installation guide here [Tortoise Local Installation](https://github.
 ## Sentence vs Longform
 Sentence should be used when synthesizing one or two sentences whereas longform should be used for longer content. Sentence works like [do_tts.py](https://github.com/neonbjb/tortoise-tts#do_ttspy) whereas longform works like [read.py](https://github.com/neonbjb/tortoise-tts#readpy). Keep in mind that longform will only return a single clip regardless of selected numOfOutputs.
 
-## WARNING
-Don't use the --share option when launching gradio as it can be used to run arbitrary code on your machine. This is due to the longform implementation involving passing an argument to cmd which can be hijacked.
+## WARNING - Update
+I'm not a 100% sure if arbitary code can be executed because I'm using cmd while generating longform audio. All requests are checked against a dictionary except the text so the text is the only thing that could be a possible attack vector. However the text is written to a txt file then the read.py reads it from there so unless there is an exploit that can execute code using the read.py it should be safe.
 
 ## What's up with the voice selections?
 Those are just the voices I've made myself, unfortunately I don't want to be hold liable publishing anyone elses voice on GitHub so you need to find recordings of the voices of the people you want to use yourself. More info in the Tortoise TTS repo.
