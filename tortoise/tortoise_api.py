@@ -9,7 +9,7 @@ if not os.path.exists("desired_outputs"):
     os.makedirs("desired_outputs")
 
 #Cache things for faster access
-characterSymbols = {"Sam Harris": "SamH",  "Ben S2": "Shapiro2", "Jordan Peterson": "JordanP", "Second Thought": "Second", "Donald Trump": "DTrump", "Kurzegesagt": "Kurzeg", "Hakim": "Hakim", "Adam Something": "AdamSo", "Bad Empanada": "BadEmp", "Ben Shapiro": "BenS", "Boris Johnson": "BorisJ", "Dennis Prager": "DennisP", "Freeman": "freeman", "Rick Sanchez": "RickS", "Two Minute Papers": "TwoMin"}
+characterSymbols = {"Sam Harris": "SamH", "train_dotrice":"train_dotrice", "Ben S2": "Shapiro2", "Jordan Peterson": "JordanP", "Second Thought": "Second", "Donald Trump": "DTrump", "Kurzegesagt": "Kurzeg", "Hakim": "Hakim", "Adam Something": "AdamSo", "Bad Empanada": "BadEmp", "Ben Shapiro": "BenS", "Boris Johnson": "BorisJ", "Dennis Prager": "DennisP", "Freeman": "freeman", "Rick Sanchez": "RickS", "Two Minute Papers": "TwoMin"}
 characters = dict.values(characterSymbols)
 
 characterCachedVoices = {}
@@ -22,14 +22,13 @@ for character in characters:
 
 print("Done caching voices")
 
-def convert_text_to_speech(text, voice, preset, numOfOutputs):    
+def convert_text_to_speech(text, voice, preset, numOfOutputs, randomNum = str(random.randint(1,1000000))):    
     reference_clips = characterCachedVoices[voice] #Immediately load voice samples from RAM
 
     #Initialise tts api
     tts = api.TextToSpeech()
-    gen = tts.tts_with_preset(text, voice_samples=reference_clips, preset=preset, k=numOfOutputs) #Generate speech
+    gen = tts.tts_with_preset(text, voice_samples=reference_clips, preset=preset, k=numOfOutputs, verbose=False) #Generate speech
 
-    randomNum = str(random.randint(1,1000000))
     files = []
 
     if isinstance(gen, list): #If multiple outputs save each
