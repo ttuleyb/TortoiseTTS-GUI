@@ -9,7 +9,7 @@ if not os.path.exists("desired_outputs"):
     os.makedirs("desired_outputs")
 
 #Cache things for faster access
-characterSymbols = {"Sam Harris": "SamH", "Jordan Peterson": "JordanP", "Donald Trump": "DTrump", "Kurzegesagt": "Kurzeg", "Adam Something": "AdamSo", "Bad Empanada": "BadEmp", "Ben Shapiro": "BenS", "Boris Johnson": "BorisJ", "Dennis Prager": "DennisP", "Freeman": "freeman", "Rick Sanchez": "RickS", "Two Minute Papers": "TwoMin"}
+characterSymbols = {"Sam Harris": "SamH",  "Ben S2": "Shapiro2", "Jordan Peterson": "JordanP", "Second Thought": "Second", "Donald Trump": "DTrump", "Kurzegesagt": "Kurzeg", "Hakim": "Hakim", "Adam Something": "AdamSo", "Bad Empanada": "BadEmp", "Ben Shapiro": "BenS", "Boris Johnson": "BorisJ", "Dennis Prager": "DennisP", "Freeman": "freeman", "Rick Sanchez": "RickS", "Two Minute Papers": "TwoMin"}
 characters = dict.values(characterSymbols)
 
 characterCachedVoices = {}

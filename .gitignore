@@ -160,3 +160,10 @@ tortoise/read.py
 tortoise/test.py
 flagged/*
 tortoise/scripts/*
+ffprobe.exe
+.gitignore
+LICENSE
+temporary_text.txt
+combined.wav
+ffmpeg.exe
+tortoise/readEntireBook.py

@@ -8,7 +8,8 @@ You can find guides and demo colab link in there. I've yet to make a colab to in
 The gradioUI I've written in python and a simple middleman script I've created to make it easier to interact with the api.
 
 ## Installation
-Follow the installation guide here [Tortoise Local Installation](https://github.com/neonbjb/tortoise-tts#local-installation) then simply put the files in the root directors, create a shell there and run gradeui.py
+Follow the installation guide here [Tortoise Local Installation](https://github.com/neonbjb/tortoise-tts#local-installation) then simply put the files in the root directors, create a shell there and run gradeui.py.
+If you wanna use merger.py ensure that ffprobe is in the path or working directory, otherwise you might get file not found error.
 
 ## Sentence vs Longform
 Sentence should be used when synthesizing one or two sentences whereas longform should be used for longer content. Sentence works like [do_tts.py](https://github.com/neonbjb/tortoise-tts#do_ttspy) whereas longform works like [read.py](https://github.com/neonbjb/tortoise-tts#readpy). Keep in mind that longform will only return a single clip regardless of selected numOfOutputs.

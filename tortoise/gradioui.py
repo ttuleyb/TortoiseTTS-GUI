@@ -13,7 +13,7 @@ if not os.path.exists("desired_outputs/longform"):
     os.makedirs("desired_outputs/longform")
 
 presetSymbols = {'ultra fast':'ultra_fast', 'fast':'fast', 'standard':'standard', 'high quality': 'high_quality'}
-characterSymbols = {"Sam Harris": "SamH", "Jordan Peterson": "JordanP", "Donald Trump": "DTrump", "Kurzegesagt": "Kurzeg", "Adam Something": "AdamSo", "Bad Empanada": "BadEmp", "Ben Shapiro": "BenS", "Boris Johnson": "BorisJ", "Dennis Prager": "DennisP", "Freeman": "freeman", "Rick Sanchez": "RickS", "Two Minute Papers": "TwoMin"}
+characterSymbols = {"Sam Harris": "SamH", "Jordan Peterson": "JordanP", "Second Thought": "Second", "Donald Trump": "DTrump", "Kurzegesagt": "Kurzeg", "Hakim": "Hakim", "Adam Something": "AdamSo", "Bad Empanada": "BadEmp", "Ben Shapiro": "BenS", "Ben S2": "Shapiro2", "Boris Johnson": "BorisJ", "Dennis Prager": "DennisP", "Freeman": "freeman", "Rick Sanchez": "RickS", "Two Minute Papers": "TwoMin"}
 
 def fileFormatter(files):
     #Read each file and format to work with gradioUI
@@ -33,10 +33,10 @@ def text_to_speech(text, voice, preset, readMode, numOfOutputs):
 
     if readMode == "longform":
         torch.cuda.empty_cache()
-        with open("temporary_text.txt", "w") as f:
+        with open("temporary_text.txt", "w", encoding="utf-8") as f:
             f.write(text)
 
-        arguments = f"--voice {voiceSymbol} --preset {presetSymbol} --textfile temporary_text.txt --output_path desired_outputs\\longform"
+        arguments = f"--voice {voiceSymbol} --preset {presetSymbol} --textfile temporary_text.txt --output_path desired_outputs\\longform --preset {presetSymbol}"
 
         files = [f"desired_outputs\\longform\\{voiceSymbol}\\combined.wav"]
 
@@ -65,9 +65,7 @@ tripleOutput = gr.Interface(
             value="Haha that's crazy bro",
         ),
         
-        gr.Dropdown(["Sam Harris", "Jordan Peterson", "Donald Trump", "Kurzegesagt", "Adam Something", 
-        "Bad Empanada", "Ben Shapiro", "Boris Johnson", "Dennis Prager", "Freeman", "Rick Sanchez", 
-        "Two Minute Papers"], value="Sam Harris", label="Voice"),
+        gr.Dropdown(list(characterSymbols.keys()), value="Sam Harris", label="Voice"),
 
         gr.Radio(["ultra fast", "fast", "standard", "high quality"], value="fast", label="Speed"),
 
