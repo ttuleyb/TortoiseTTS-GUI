@@ -1,4 +1,7 @@
 # TortoiseTTS GUI
+
+## New: Ability to encode entire books automatically
+Check out readEntireBook.py it allows you to paste enormously large text files and splits them into clusters. It will then split those clusters into individual sentences using tortoise built in tools. This allows you to read more files than the read.py limit which is around 20000 characters on my machine.
 ## What is this?
 This is a gradio GUI to make it easier to use [Tortoise TTS](https://github.com/neonbjb/tortoise-tts) **Check it out for more information such as cloning your own voice or others**
 
