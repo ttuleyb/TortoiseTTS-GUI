@@ -9,7 +9,19 @@ if not os.path.exists("desired_outputs"):
     os.makedirs("desired_outputs")
 
 #Cache things for faster access
-characterSymbols = {"Sam Harris": "SamH", "train_dotrice":"train_dotrice", "Ben S2": "Shapiro2", "Jordan Peterson": "JordanP", "Second Thought": "Second", "Donald Trump": "DTrump", "Kurzegesagt": "Kurzeg", "Hakim": "Hakim", "Adam Something": "AdamSo", "Bad Empanada": "BadEmp", "Ben Shapiro": "BenS", "Boris Johnson": "BorisJ", "Dennis Prager": "DennisP", "Freeman": "freeman", "Rick Sanchez": "RickS", "Two Minute Papers": "TwoMin"}
+
+def updateVoicesList():
+    voices = {}
+    for root_dir , sub_dir , sub_dir_files in os.walk('tortoise/voices'):
+        for sub_dir_file in sub_dir_files:
+            if sub_dir_file.endswith('.wav'):
+                voice = os.path.basename( root_dir )
+                voices[ voice ] = voice
+    voices = dict( sorted( voices.items() ) )
+    return voices
+
+characterSymbols = updateVoicesList()
+
 characters = dict.values(characterSymbols)
 
 characterCachedVoices = {}
@@ -22,12 +34,12 @@ for character in characters:
 
 print("Done caching voices")
 
-def convert_text_to_speech(text, voice, preset, numOfOutputs, randomNum = str(random.randint(1,1000000))):    
+def convert_text_to_speech(text, voice, preset, numOfOutputs, randomNum = str(random.randint(1,1000000))):
     reference_clips = characterCachedVoices[voice] #Immediately load voice samples from RAM
 
     #Initialise tts api
     tts = api.TextToSpeech()
-    gen = tts.tts_with_preset(text, voice_samples=reference_clips, preset=preset, k=numOfOutputs, verbose=False) #Generate speech
+    gen = tts.tts_with_preset(text, voice_samples=reference_clips, preset=preset, k=numOfOutputs, verbose=True) #Generate speech
 
     files = []
 
