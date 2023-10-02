@@ -79,7 +79,7 @@ tripleOutput = gr.Interface(
     examples=[
         ["I tell them hell yeah! America is great", list(characterSymbols.keys())[0], "fast", "sentence", 3],
         ["The universe's third eye is visible when you really look for it", list(characterSymbols.keys())[1], "fast","sentence", 2],
-        ["The woke liberals are overrunning our university campuses", list(characterSymbols.keys())[2],"sentence", "fast", 3],
+        ["The woke liberals are overrunning our university campuses", list(characterSymbols.keys())[2],"fast", "sentence", 3],
         ["Liz Truss, absolute wanker", list(characterSymbols.keys())[3], "fast", "sentence", 3],
         ["Hello dear scholars, Today I'm showing the new sentient AI", list(characterSymbols.keys())[4], "fast", "longform", 1]
     ],
