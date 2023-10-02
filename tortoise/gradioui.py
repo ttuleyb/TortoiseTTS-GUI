@@ -5,6 +5,7 @@ import gradio as gr
 import scipy
 # import tortoise_api
 from tortoise_api import convert_text_to_speech
+from tortoise_api import updateVoicesList
 import torch
 
 #Migrate API to a seperate script and use cls to access it for easy unloading
@@ -13,7 +14,8 @@ if not os.path.exists("desired_outputs/longform"):
     os.makedirs("desired_outputs/longform")
 
 presetSymbols = {'ultra fast':'ultra_fast', 'fast':'fast', 'standard':'standard', 'high quality': 'high_quality'}
-characterSymbols = {"Sam Harris": "SamH", "Jordan Peterson": "JordanP", "Second Thought": "Second", "Donald Trump": "DTrump", "Kurzegesagt": "Kurzeg", "Hakim": "Hakim", "Adam Something": "AdamSo", "Bad Empanada": "BadEmp", "Ben Shapiro": "BenS", "Ben S2": "Shapiro2", "Boris Johnson": "BorisJ", "Dennis Prager": "DennisP", "Freeman": "freeman", "Rick Sanchez": "RickS", "Two Minute Papers": "TwoMin"}
+
+characterSymbols = updateVoicesList()
 
 def fileFormatter(files):
     #Read each file and format to work with gradioUI
@@ -56,7 +58,7 @@ def text_to_speech(text, voice, preset, readMode, numOfOutputs):
     return files
 
 tripleOutput = gr.Interface(
-    
+
     fn = text_to_speech, #Function
     inputs = [ #Inputs
         gr.Textbox(
@@ -64,8 +66,8 @@ tripleOutput = gr.Interface(
             lines=3,
             value="Haha that's crazy bro",
         ),
-        
-        gr.Dropdown(list(characterSymbols.keys()), value="Sam Harris", label="Voice"),
+
+        gr.Dropdown(list(characterSymbols.keys()), value=list(characterSymbols.keys())[0], label="Voice"),
 
         gr.Radio(["ultra fast", "fast", "standard", "high quality"], value="fast", label="Speed"),
 
@@ -75,11 +77,11 @@ tripleOutput = gr.Interface(
     ],
     outputs = ["audio", "audio", "audio"], #Outputs
     examples=[
-        ["I tell them hell yeah! America is great", "Donald Trump", "fast", "sentence", 3],
-        ["The universe's third eye is visible when you really look for it", "Sam Harris", "fast","sentence", 2],
-        ["The woke liberals are overrunning our university campuses", "Ben Shapiro","sentence", "fast", 3],
-        ["Liz Truss, absolute wanker", "Boris Johnson", "fast", "sentence", 3],
-        ["Hello dear scholars, Today I'm showing the new sentient AI", "Two Minute Papers", "fast", "longform", 1]
+        ["I tell them hell yeah! America is great", list(characterSymbols.keys())[0], "fast", "sentence", 3],
+        ["The universe's third eye is visible when you really look for it", list(characterSymbols.keys())[1], "fast","sentence", 2],
+        ["The woke liberals are overrunning our university campuses", list(characterSymbols.keys())[2],"fast", "sentence", 3],
+        ["Liz Truss, absolute wanker", list(characterSymbols.keys())[3], "fast", "sentence", 3],
+        ["Hello dear scholars, Today I'm showing the new sentient AI", list(characterSymbols.keys())[4], "fast", "longform", 1]
     ],
 )
 
