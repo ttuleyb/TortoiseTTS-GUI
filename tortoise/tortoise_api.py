@@ -14,7 +14,7 @@ def updateVoicesList():
     voices = {}
     for root_dir , sub_dir , sub_dir_files in os.walk('tortoise/voices'):
         for sub_dir_file in sub_dir_files:
-            if sub_dir_file.endswith('.wav'):
+            if sub_dir_file.endswith('.wav') or sub_dir_file.endswith('.mp3'):
                 voice = os.path.basename( root_dir )
                 voices[ voice ] = voice
     voices = dict( sorted( voices.items() ) )
@@ -28,7 +28,7 @@ characterCachedVoices = {}
 
 #Load each listed characters voice into memory
 for character in characters:
-    clips_paths = Path(f"tortoise/voices/{character}").glob("**/*.wav")
+    clips_paths = list( Path(f"tortoise/voices/{character}").glob("**/*.wav") ) + list( Path(f"tortoise/voices/{character}").glob("**/*.mp3") )
     reference_clips = [tortoise.utils.audio.load_audio(p.absolute().__str__(), 22050) for p in clips_paths]
     characterCachedVoices[character] = reference_clips
 
